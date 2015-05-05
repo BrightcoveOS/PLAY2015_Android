@@ -4,11 +4,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.brightcove.player.captioning.BrightcoveCaptionFormat;
 import com.brightcove.player.mediacontroller.BrightcoveMediaController;
 import com.brightcove.player.model.Video;
 import com.brightcove.player.samples.play.R;
 import com.brightcove.player.view.BrightcoveExoPlayerVideoView;
 import com.brightcove.player.view.BrightcovePlayer;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * A basic demo for the Brightcove Native Player for Android that demonstrates media playback with
@@ -27,7 +31,7 @@ public class MainActivity extends BrightcovePlayer {
         setContentView(R.layout.activity_main);
         brightcoveVideoView = (BrightcoveExoPlayerVideoView) findViewById(R.id.brightcove_video_view);
 
-        // Add custom controls. 
+        // Add custom controls.
         BrightcoveMediaController mediaController = new BrightcoveMediaController(brightcoveVideoView);
         brightcoveVideoView.setMediaController(mediaController);
 
@@ -39,6 +43,23 @@ public class MainActivity extends BrightcovePlayer {
         Uri video = Uri.parse("android.resource://" + PACKAGE_NAME + "/" + R.raw.sintel_trailer);
         brightcoveVideoView.add(Video.createVideo(video.toString()));
 
+        // Add captions for source video.
+        BrightcoveCaptionFormat captionFormat = BrightcoveCaptionFormat.createCaptionFormat("text/vtt", "en");
+        try {
+            brightcoveVideoView.addSubtitleSource(new URI("https://raw.githubusercontent.com/BrightcoveOS/android-player-samples/master/WebVTTSampleApp/src/main/res/raw/sintel_trailer_en.vtt"), captionFormat);
+            captionFormat = BrightcoveCaptionFormat.createCaptionFormat("text/vtt", "de");
+            brightcoveVideoView.addSubtitleSource(new URI("https://raw.githubusercontent.com/BrightcoveOS/android-player-samples/master/WebVTTSampleApp/src/main/res/raw/sintel_trailer_de.vtt"), captionFormat);
+            captionFormat = BrightcoveCaptionFormat.createCaptionFormat("text/vtt", "es");
+            brightcoveVideoView.addSubtitleSource(new URI("https://raw.githubusercontent.com/BrightcoveOS/android-player-samples/master/WebVTTSampleApp/src/main/res/raw/sintel_trailer_es.vtt"), captionFormat);
+            captionFormat = BrightcoveCaptionFormat.createCaptionFormat("text/vtt", "fr");
+            brightcoveVideoView.addSubtitleSource(new URI("https://raw.githubusercontent.com/BrightcoveOS/android-player-samples/master/WebVTTSampleApp/src/main/res/raw/sintel_trailer_fr.vtt"), captionFormat);
+            captionFormat = BrightcoveCaptionFormat.createCaptionFormat("text/vtt", "it");
+            brightcoveVideoView.addSubtitleSource(new URI("https://raw.githubusercontent.com/BrightcoveOS/android-player-samples/master/WebVTTSampleApp/src/main/res/raw/sintel_trailer_it.vtt"), captionFormat);
+            captionFormat = BrightcoveCaptionFormat.createCaptionFormat("text/vtt", "nl");
+            brightcoveVideoView.addSubtitleSource(new URI("https://raw.githubusercontent.com/BrightcoveOS/android-player-samples/master/WebVTTSampleApp/src/main/res/raw/sintel_trailer_nl.vtt"), captionFormat);
+        } catch (URISyntaxException e) {
+            Log.e(TAG, "Error with captions occurred: " + e.getMessage());
+        }
 
         // Log whether or not instance state in non-null.
         if (savedInstanceState != null) {
