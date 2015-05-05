@@ -2,41 +2,15 @@ package com.brightcove.player.sample.play;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.format.DateUtils;
 import android.util.Log;
-import android.view.ViewGroup;
-
-import com.brightcove.ima.GoogleIMAComponent;
-import com.brightcove.ima.GoogleIMAEventType;
-import com.brightcove.player.captioning.BrightcoveCaptionFormat;
-import com.brightcove.player.edge.Catalog;
-import com.brightcove.player.edge.VideoListener;
-import com.brightcove.player.event.Event;
-import com.brightcove.player.event.EventEmitter;
-import com.brightcove.player.event.EventListener;
-import com.brightcove.player.event.EventType;
-import com.brightcove.player.media.DeliveryType;
-import com.brightcove.player.mediacontroller.BrightcoveMediaController;
-import com.brightcove.player.model.CuePoint;
-import com.brightcove.player.model.Source;
 import com.brightcove.player.model.Video;
 import com.brightcove.player.samples.play.R;
 import com.brightcove.player.view.BrightcoveExoPlayerVideoView;
 import com.brightcove.player.view.BrightcovePlayer;
-import com.brightcove.player.view.BrightcoveVideoView;
-import com.google.ads.interactivemedia.v3.api.AdDisplayContainer;
-import com.google.ads.interactivemedia.v3.api.AdsRequest;
-import com.google.ads.interactivemedia.v3.api.CompanionAdSlot;
-import com.google.ads.interactivemedia.v3.api.ImaSdkFactory;
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
- * Created by bhnath on 5/4/15.
+ * A basic demo for the Brightcove Native Player for Android that demonstrates media playback with
+ * custom controls, captioning and ad playback.
  */
 public class MainActivity extends BrightcovePlayer {
     private final String TAG = this.getClass().getSimpleName();
