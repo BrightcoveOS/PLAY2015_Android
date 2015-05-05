@@ -3,6 +3,8 @@ package com.brightcove.player.sample.play;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.brightcove.player.mediacontroller.BrightcoveMediaController;
 import com.brightcove.player.model.Video;
 import com.brightcove.player.samples.play.R;
 import com.brightcove.player.view.BrightcoveExoPlayerVideoView;
@@ -24,6 +26,11 @@ public class MainActivity extends BrightcovePlayer {
         // notifications and to control logging.
         setContentView(R.layout.activity_main);
         brightcoveVideoView = (BrightcoveExoPlayerVideoView) findViewById(R.id.brightcove_video_view);
+
+        // Add custom controls. 
+        BrightcoveMediaController mediaController = new BrightcoveMediaController(brightcoveVideoView);
+        brightcoveVideoView.setMediaController(mediaController);
+
 
         super.onCreate(savedInstanceState);
 
