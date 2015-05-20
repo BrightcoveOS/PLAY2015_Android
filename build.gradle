@@ -68,8 +68,7 @@ configure(subprojects.findAll {it.name.startsWith('app')}) {
 
     dependencies {
         compile "com.brightcove.player:exoplayer:${anpVersion}"
-        //@TODO set up drop in for old and new sdk.
-        compile 'com.brightcove.player:android-sdk:4.3.7-SNAPSHOT@aar'
+        compile "com.brightcove.player:android-sdk:${anpVersion}"
 
         downloadIMA()
         compile "com.brightcove.player:android-ima-plugin:${anpVersion}"
